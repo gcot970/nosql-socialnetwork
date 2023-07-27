@@ -12,7 +12,7 @@ module.exports = {
     },
 
     // Get a single thought by ID
-    async getThoughtById(req, res) {
+    async getSingleThought(req, res) {
         try {
             const thought = await Thought.findById(req.params.thoughtId).populate('reactions');
 
@@ -47,7 +47,7 @@ module.exports = {
     },
 
     // Update a thought by ID
-    async updateThoughtById(req, res) {
+    async updateThought(req, res) {
         try {
             const { thoughtId } = req.params;
             const { thoughtText } = req.body;
@@ -65,7 +65,7 @@ module.exports = {
     },
 
     // Delete a thought by ID and remove its references from the user's thoughts and reactions
-    async deleteThoughtById(req, res) {
+    async deleteThought(req, res) {
         try {
             const { thoughtId } = req.params;
 

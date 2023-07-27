@@ -19,7 +19,25 @@ const thoughtSchema = new Schema(
       type: String,
       required: true,
     },
-    reactions: [reactionSchema],
+    reactions: [
+      // Array of objects with the structure defined by the reactionSchema
+      {
+        reactionBody: {
+          type: String,
+          required: true,
+          maxlength: 280,
+        },
+        createdAt: {
+          type: Date,
+          default: Date.now,
+          get: (timestamp) => formatDate(timestamp),
+        },
+        username: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
   },
   {
     toJSON: {
@@ -27,6 +45,8 @@ const thoughtSchema = new Schema(
     },
   }
 );
+
+
 
 // Reformats date for timestamp (used for createdAt)
 function formatDate(timestamp) {
