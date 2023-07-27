@@ -12,7 +12,7 @@ module.exports = {
     },
 
     // Get a single user by ID
-    async getUserById(req, res) {
+    async getSingleUser(req, res) {
         try {
             const user = await User.findById(req.params.userId)
                 .populate('thoughts')
@@ -39,7 +39,7 @@ module.exports = {
     },
 
     // Update a user by ID
-    async updateUserById(req, res) {
+    async updateUser(req, res) {
         try {
             const updatedUser = await User.findByIdAndUpdate(
                 req.params.userId,
@@ -58,7 +58,7 @@ module.exports = {
     },
 
     // Delete a user by ID and associated thoughts and reactions
-    async deleteUserById(req, res) {
+    async deleteUser(req, res) {
         try {
             const deletedUser = await User.findByIdAndDelete(req.params.userId);
 
